@@ -1,0 +1,24 @@
+#arrierePlan
+{
+    background-image: url("https://images6.alphacoders.com/690/thumb-1920-690138.jpg"); 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-attachment: fixed;/* permet de fixé l'image*/
+}
+
+.boutonInvisible
+{
+    background: transparent;
+    border: none;
+}
+
+.table
+{
+    opacity:0.80;
+}
+
+.imageTableau
+{		
+    width: 50%;
+    height: 25%;
+}

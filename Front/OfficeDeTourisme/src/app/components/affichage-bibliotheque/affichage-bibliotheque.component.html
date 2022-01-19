@@ -1,0 +1,139 @@
+<div id="arrierePlan" class="container-fluid">
+
+  <div class="jumbotron jumbotron-fluid md-2">
+    <div class="container">
+      <h1 class="display-4">Bienvenue sur notre site office de tourisme</h1>
+      <p class="lead">Ce site rassemble toutes les bibliothèques de Paris, vous avez la possibilité de rechercher une
+        bibliothèque par son nom mais aussi de consulter les livres disponible par bibliothèque.</p>
+    </div>
+
+    <!---------------------------------------------------------------------- trie par nombre d'adhérent--------------------------------------------------------------------------------------------------------->
+    <div class="input-group" (ngSubmit)="trieParPlageNombreAdherent(nbrAdherentPlage)" #nbrAdherentPlage="ngForm">
+      <span class="input-group-text fas fa-user-friends" id="basic-addon1" ></span>
+      <input name="minAdherent" type="number" class="form-control"  id="nbrMinAdherent" placeholder="minimum de participant" ngModel>
+      <input name="maxAdherent" type="number" class="form-control" id="nbrMaxAdherent" placeholder="maximum de participant"  ngModel>
+      <button class="btn btn-primary" type="submit"> Rechercher</button>
+    </div>
+    <!---------------------------------------------------------------------- fin trie par nombre d'adhérent--------------------------------------------------------------------------------------------------------->
+
+    <!---------------------------------------------------------------------- trie par nom de bibliothèque--------------------------------------------------------------------------------------------------------->
+    <div class="container-fluid rechercheBiblio md-4 mb-4 p-4 col-10">
+      <input class="form-control" type="text" name="search" [(ngModel)]="motRecherche" (ngModelChange)="rechercheParNom()"
+        placeholder="Rechercher une bibliothèque">
+      <p class="fs-6" *ngIf="voirMessageTrouve">Nombre d'élément trouvé: {{nbrObjetRetourne}} pour la recherche
+        "{{motRecherche}}"</p>
+      <p class="fs-1" *ngIf="voirMessageRienTrouve">Aucun élément trouvé pour "{{motRecherche}}"</p>
+    </div>
+    <!----------------------------------------------------------------------fin trie par nom de bibliothèque--------------------------------------------------------------------------------------------------------->
+
+
+  </div>
+
+
+  <div class="container-fluid">
+
+    <!----------------------------------------------------------- ma colone de gauche ---------------------------------------------------------------------------------------------------------------------------------->
+    <article class="colGauche m-4">
+      <div id="carouselPlusBelleBiblio" class="carousel slide col-4 col-sm 6 col-md-10 col-lg-12 mb-3"
+        data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://www.sortiraparis.com/images/1001/77153/378729-.jpg" class="d-block w-100"
+              alt="Bibliothèque Sainte-Geneviève">
+          </div>
+          <div class="carousel-item">
+            <img src="https://www.sortiraparis.com/images/1001/77153/378747-.jpg" class="d-block w-100"
+              alt="Bibliothèque de la Sorbonne">
+          </div>
+          <div class="carousel-item">
+            <img src="https://www.sortiraparis.com/images/1001/77153/378762-.jpg" class="d-block w-100"
+              alt="Bibliothèque Richelieu">
+          </div>
+          <div class="carousel-item">
+            <img src="https://www.sortiraparis.com/images/1001/77153/378771-.jpg" class="d-block w-100"
+              alt="Bibliothèque Mazarine">
+          </div>
+          <div class="carousel-item">
+            <img src="https://www.sortiraparis.com/images/1001/77153/378777-.jpg" class="d-block w-100"
+              alt="Bibliothèque Historique de la Ville de Paris">
+          </div>
+
+        </div>
+        
+        <!--appelle de mon image local -->
+        <img src="../../../assets/marque_page.png" class="col-12 col-sm 8 col-md-10 col-lg-12 mt-5">
+       
+      </div>
+    </article>
+    <!----------------------------------------------------------- fin colone de gauche ---------------------------------------------------------------------------------------------------------------------------------->
+
+    <!----------------------------------------------------------- mon élément centrale ---------------------------------------------------------------------------------------------------------------------------------->
+
+    <article class="elementCentrale">
+      <section class="row">
+        <article class="col-8 col-md-4 col-lg-4 mb-3" *ngFor="let iter of listeBibliotheque._embedded.bibliotheques">
+          <!-- col-12 col-md-6 col-lg-4 mb-3-->
+          <div class="card card-white spacing">
+
+            <img src={{iter.urlPhoto}} class="img-fluid rounded-start" alt="image de la bibliothèque">
+
+            <section class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{iter.nom}}</h5>
+                <p class="card-text">{{iter.nbrAdherent}} d'adhérent</p>
+                <p class="card-text">{{iter.description}}</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <!-- affichage de ma futur fonction tempDerniereModif-->
+                <button (click)="rechercheLivreParBiblio(iter.id)" data-bs-dismiss="modal" data-bs-target="#PopupAffichageLivre"> Voir les Livres </button>
+
+                <!--------------------------------------------------------- fenêtre modal qui contient les livres------------------------------------------------------------------->
+                <div class="modal" id="PopupAffichageLivre" tabindex="-1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Livre disponible </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-------------------------------------------------------------- affichage de mon tableau livre par biblio ------------------------------------------->
+                        <!-- <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">titre</th>
+                              <th scope="col">auteur</th>
+                              <th scope="col">catégorie</th>
+                            </tr>
+                            <thead>
+
+                            <tbody>
+                              <tr *ngFor="let iterLivre of listeLivreBiblio._embedded.livres"> 
+                                <td>{{iter.title}}</td>
+                                <td>{{iter.auteur}}</td>
+                                <td>{{iter.categorie}}</td>
+                              </tr>
+                            </tbody>
+                        </table> -->
+                        <!-------------------------------------------------------------- fin affichage de mon tableau livre par biblio------------------------------------------->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        <!--bouton close de ma fenêtre-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--------------------------------------------------------- fin fenêtre modal qui contient les livres------------------------------------------------------------------->
+
+              </div>
+            </section>
+
+          </div>
+        </article>
+
+      </section>
+    </article>
+    <!----------------------------------------------------------- fin mon élément centrale ---------------------------------------------------------------------------------------------------------------------------------->
+
+
+  </div> <!-- fin div container -->
+</div><!-- fin div arrierePlan -->

@@ -1,0 +1,43 @@
+#arrierePlan
+{
+    background-color: burlywood;
+    background-size: cover; 
+   /* background-attachment: fixed; permet de fixé l'image */
+} 
+
+.colGauche
+{
+    float:left;
+    width: 20%; /*occupe les 20 premier pourcent de l'écran */
+    height: 100%vh;
+}
+
+.elementCentrale
+{
+    float:right;
+    width: 75%; /*occupe les 75 premier pourcent de l'écran */
+}
+
+.imageTableau
+{		
+    width: 50%;
+    height: 25%;
+    opacity:0.7;
+}
+
+.couleurh1Biblio
+{
+   color: rgba(1, 20, 20, 0.849) ;
+}
+
+.rechercheBiblio
+{
+    width: 25%;
+    height:30%;
+    right:50%;
+}
+
+.card
+{
+    height: 100%; /* responsive redimentionement de la card*/
+}
