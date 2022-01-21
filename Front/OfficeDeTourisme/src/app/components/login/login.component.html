@@ -1,0 +1,15 @@
+<div class="container col-6"> 
+  <form (ngSubmit)="testConnexion(NewConnexion)" #NewConnexion="ngForm">
+    <div class="mb-3">
+      <label for="exampleInputUser" class="form-label">User</label>
+      <input type="text" class="form-control" id="exampleInputUser" aria-describedby="userHelp" name="user" ngModel>
+      <div id="user" class="form-text">Never share your user with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Mot de Passe</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary">Valider</button>
+</form>
+
+</div>

@@ -8,6 +8,7 @@ import { AffichageBibliothequeComponent } from './components/affichage-bibliothe
 import { GestionBibliothequeComponent } from './components/gestion-bibliotheque/gestion-bibliotheque.component';
 import { FormsModule } from '@angular/forms';
 import { AffichageLivreComponent } from './components/affichage-livre/affichage-livre.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { AffichageLivreComponent } from './components/affichage-livre/affichage-
     AffichageBibliothequeComponent,
     GestionBibliothequeComponent,
     AffichageLivreComponent,
+    LoginComponent,
 
   ],
   imports: [
