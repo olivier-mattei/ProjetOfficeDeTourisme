@@ -5,17 +5,24 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="affichage-bibliotheque">Liste des bibliothèques</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="gestion-bibliotheque">Gestion des bibliothèques</a>
+    <li class="nav-item" *ngIf="Admin"> 
+      <a class="nav-link" routerLink="gestion-bibliotheque"> <i class="fas fa-user-lock"></i>  Gestion des bibliothèques</a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="affichage-livre">Tous les livres disponible</a>
+      <a class="nav-link" routerLink="affichage-livre"> Tous les livres disponible</a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="Login"><i class="fas fa-id-card"></i>Authentification</a>
+      <a class="nav-link PostionementADroite" routerLink="Login" *ngIf="PasConnecter"><i class="fas fa-id-card"></i>  Authentification</a>
     </li>
+    
+    <li class="nav-item PostionementADroite" *ngIf="!PasConnecter" > 
+      <button (click)="deconnectionUtilisateur()"> <i class="fas fa-sign-out-alt"></i> </button>
+    </li>
+
+
+
   </ul>
 
 <router-outlet> </router-outlet> <!-- connection à mon fichier routing-->
